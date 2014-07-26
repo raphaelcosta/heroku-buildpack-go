@@ -141,10 +141,13 @@ then
         then
             echo $cgo_opt
             echo $env_dir
+            echo "$cgo_opt=$(cat "$env_dir/$cgo_opt")"
             export "$cgo_opt=$(cat "$env_dir/$cgo_opt")"
         fi
     done
 fi
+
+echo `ls /app/vendor/`
 
 export "PKG_CONFIG_PATH=\"/app/vendor/imagemagick/lib/pkgconfig\""
 pkg=`pkg-config --cflags --libs MagickWand`
